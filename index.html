@@ -17,6 +17,7 @@
 
     <div class="container-fluid p-3 px-md-4 mb-3">
         <div class="container">
+            <h2>Z-p</h2>
             <div class="row">
                 <div class="col">
                     <div class="card">
@@ -66,26 +67,54 @@
                     m = x^E mod p
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="form-group">
-                                <button type="button" class="btn btn-primary" id="btnEncrypt"
-                                    style="padding-left: 50px;padding-right: 50px;">Encryption</button>
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="btnEncrypt"
+                                        style="padding-left: 50px;padding-right: 50px;">Encryption</button>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <input type="number" class="form-control" name="encryption" id="encryption"
+                                    aria-describedby="helpId" placeholder="p = x^E">
                             </div>
                         </div>
-                        <div class="col-9">
-                            <input type="text" class="form-control" name="encryption" id="encryption"
-                                aria-describedby="helpId" placeholder="p = x^E">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 10px;">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="btnDecryption"
+                                        style="padding-left: 50px;padding-right: 50px;">Decryption</button>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="D" id="D" aria-describedby="D"
+                                        placeholder="D">
+                                    <small id="helpD" class="form-text text-muted">D in Z_p</small>
+                                </div>
+
+                            </div>
+                            <div class="col-6">
+                                <input type="number" class="form-control" name="encryption" id="encryption"
+                                    aria-describedby="helpEncryption" placeholder="p = x^E">
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
         <hr />
         <div class="container">
+            <h2>RSA</h2>
             <div class="row">
                 <div class="col">
                     <div class="card">
@@ -124,7 +153,6 @@
                                 <button type="button" class="btn btn-primary" id="randomX1"
                                     style="padding-left: 50px;padding-right: 50px;">Random</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -152,12 +180,12 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
-                                <button type="button" class="btn btn-primary" id="btnEncrypt"
-                                    style="padding-left: 50px;padding-right: 50px;">Encryption</button>
+                                <button type="button" class="btn btn-primary" id="btnDecryption"
+                                    style="padding-left: 50px;padding-right: 50px;">Decryption</button>
                             </div>
                         </div>
                         <div class="col-9">
-                            <input type="text" class="form-control" name="encryption" id="encryption"
+                            <input type="number" class="form-control" name="Decryption" id="Decryption"
                                 aria-describedby="helpId" placeholder="p = x^E">
                         </div>
                     </div>
