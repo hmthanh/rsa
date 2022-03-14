@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Encryption - Decryption</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid p-3 px-md-4 mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">p</h4>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="p" id="p" aria-describedby="helpId"
+                                    placeholder="p">
+                                <small id="helpId" class="form-text text-muted">p is prime</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">x</h4>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="x" id="x" aria-describedby="helpId"
+                                    placeholder="x">
+                                <small id="helpId" class="form-text text-muted">x in Z_p</small>
+                            </div>
+                            <div class="form-group" style="text-align: center;">
+                                <button type="button" class="btn btn-primary" id="randomX"
+                                    style="padding-left: 50px;padding-right: 50px;">Random</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">E</h4>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="E" id="E" aria-describedby="helpId"
+                                    placeholder="E">
+                                <small id="helpId" class="form-text text-muted">E in Z_p</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div style="padding: 10px; text-align: center;">
+                    m = x^E mod p
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" id="btnEncrypt"
+                                    style="padding-left: 50px;padding-right: 50px;">Encryption</button>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" name="encryption" id="encryption"
+                                aria-describedby="helpId" placeholder="p = x^E">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">p</h4>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="p1" id="p1" aria-describedby="helpId"
+                                    placeholder="p">
+                                <small id="helpId" class="form-text text-muted">p is prime</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">q</h4>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="q1" id="q1" aria-describedby="helpId"
+                                    placeholder="q">
+                                <small id="helpId" class="form-text text-muted">q is prime, q != p</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">x</h4>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="x1" id="x1" aria-describedby="helpId"
+                                    placeholder="x">
+                                <small id="helpId" class="form-text text-muted">x in Z_p</small>
+                            </div>
+                            <div class="form-group" style="text-align: center;">
+                                <button type="button" class="btn btn-primary" id="randomX1"
+                                    style="padding-left: 50px;padding-right: 50px;">Random</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">E</h4>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="E1" id="E1" aria-describedby="helpId"
+                                    placeholder="E">
+                                <small id="helpId" class="form-text text-muted">E in Z_p</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div style="padding: 10px; text-align: center;">
+                    m = x^E mod p
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" id="btnEncrypt"
+                                    style="padding-left: 50px;padding-right: 50px;">Encryption</button>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" name="encryption" id="encryption"
+                                aria-describedby="helpId" placeholder="p = x^E">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#btnEncrypt").click(() => {
+                p = $("#p").val();
+                x = $("#x").val();
+                E = $("#E").val();
+
+                encrypt = 1;
+                for (i = 1; i < E; i++) {
+                    encrypt = (encrypt * x) % p;
+                }
+
+                $("#encryption").val(encrypt);
+                $("#encryption").prop('disabled', true);
+
+                console.log(p);
+                console.log(x);
+                console.log(E);
+                console.log(encrypt);
+            })
+
+            $("#randomX").click(() => {
+                num = Math.floor((Math.random() * 100) + 5);
+                $("#x").val(num);
+            })
+            $("#randomX1").click(() => {
+                num = Math.floor((Math.random() * 100) + 5);
+                $("#x1").val(num);
+            })
+        });
+
+    </script>
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
