@@ -259,30 +259,30 @@
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="p-primes list-group-item">324617</button>
-                        <button type="button" class="p-primes list-group-item">125507</button>
-                        <button type="button" class="p-primes list-group-item">125507</button>
+                        <button type="button" class="p-primes list-group-item">619</button>
+                        <button type="button" class="p-primes list-group-item">859</button>
+                        <button type="button" class="p-primes list-group-item">1249</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="p-primes list-group-item">72437347</button>
-                        <button type="button" class="p-primes list-group-item">32437247</button>
-                        <button type="button" class="p-primes list-group-item">32437247</button>
+                        <button type="button" class="p-primes list-group-item">2663</button>
+                        <button type="button" class="p-primes list-group-item">3593</button>
+                        <button type="button" class="p-primes list-group-item">5641</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="p-primes list-group-item">224364913</button>
-                        <button type="button" class="p-primes list-group-item">724365347</button>
-                        <button type="button" class="p-primes list-group-item">724365347</button>
+                        <button type="button" class="p-primes list-group-item">41077</button>
+                        <button type="button" class="p-primes list-group-item">613471</button>
+                        <button type="button" class="p-primes list-group-item">5124263</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="p-primes list-group-item">1243644097</button>
-                        <button type="button" class="p-primes list-group-item">924364254469</button>
-                        <button type="button" class="p-primes list-group-item">924364254469</button>
+                        <button type="button" class="p-primes list-group-item">21237343</button>
+                        <button type="button" class="p-primes list-group-item">37236071</button>
+                        <button type="button" class="p-primes list-group-item">772351421</button>
                     </div>
                 </div>
             </div>
@@ -302,30 +302,30 @@
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="q-primes list-group-item">324617</button>
-                        <button type="button" class="q-primes list-group-item">125507</button>
-                        <button type="button" class="q-primes list-group-item">125507</button>
+                        <button type="button" class="q-primes list-group-item">433</button>
+                        <button type="button" class="q-primes list-group-item">1039</button>
+                        <button type="button" class="q-primes list-group-item">1847</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="q-primes list-group-item">72437347</button>
-                        <button type="button" class="q-primes list-group-item">32437247</button>
-                        <button type="button" class="q-primes list-group-item">32437247</button>
+                        <button type="button" class="q-primes list-group-item">4421</button>
+                        <button type="button" class="q-primes list-group-item">5419</button>
+                        <button type="button" class="q-primes list-group-item">6053</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="q-primes list-group-item">224364913</button>
-                        <button type="button" class="q-primes list-group-item">724365347</button>
-                        <button type="button" class="q-primes list-group-item">724365347</button>
+                        <button type="button" class="q-primes list-group-item">39359</button>
+                        <button type="button" class="q-primes list-group-item">692581</button>
+                        <button type="button" class="q-primes list-group-item">5826133</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="q-primes list-group-item">1243644097</button>
-                        <button type="button" class="q-primes list-group-item">924364254469</button>
-                        <button type="button" class="q-primes list-group-item">924364254469</button>
+                        <button type="button" class="q-primes list-group-item">64236869</button>
+                        <button type="button" class="q-primes list-group-item">15236141</button>
+                        <button type="button" class="q-primes list-group-item">872352851</button>
                     </div>
                 </div>
             </div>
@@ -432,7 +432,7 @@
                                     m = x^E mod n
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-6">
                                 <input type="number" class="form-control" name="txtEncrypt" id="txtEncrypt"
                                     aria-describedby="helpId" placeholder="m = x^E mod n">
                             </div>
@@ -640,13 +640,10 @@
 
             $("#btnInverse").click(() => {
                 let E = BigInt($("#txtE").val());
-                let n = BigInt($("#txtn").val());
                 let phin = BigInt($("#phin").val());
 
                 let invPromise = new Promise((resolve, reject) => {
                     try {
-                        // let inv;// = modInverse1(E, p - 1n);
-                        // let inv = modInverse1(E, p - 1n);
                         let m = phin;
                         for (let num = 1n; num < m; num++) {
                             if (((E % m) * (num % m)) % m == 1) {
@@ -692,9 +689,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
-        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous"> -->
 </body>
 
 </html>
