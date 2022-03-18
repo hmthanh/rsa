@@ -198,7 +198,7 @@
                         <div class="card-body">
                             <h4 class="card-title">E * D mod n = 1</h4>
                             <div class="form-group">
-                                <textarea type="text" class="form-control" name="txtPrime" value="1" id="txtPrime"
+                                <textarea type="text" class="form-control" name="txtED" value="1" id="txtED"
                                     aria-describedby="helpId" placeholder="" rows="5"></textarea>
                                 <small id="helpId" class="form-text text-muted">E, D ∈ U(Z<sub>n</sub>)</small>
                             </div>
@@ -829,8 +829,35 @@
                     }
                     $("#txtPrime").val(coprime);
                 });
+                function findED(n) {
+                    return new Promise((resolve, reject) => {
+                        es = []
+                        for (let i = 2n; i < n; i++) {
+                            if (gcd(i, n) == 1n) {
+                                es.push(i);
+                            }
+                        }
+                        let dict = {};
+                        for (e1 in es) {
+                            for (e2 in es) {
+                                if ((es[e1] * es[e2]) % n == 1n) {
+                                    dict[es[e1]] = es[e2];
+                                }
+                            }
+                        }
+                        resolve(dict);
+                    })
+                }
                 $("#btnED").click(async function () {
+                    let n = BigInt($("#cop").val());
 
+                    await findED(n).then(dict => {
+                        let txt = ""
+                        for (e in dict) {
+                            txt += `${e} * ${dict[e]} mod ${n} = 1\n`;
+                        }
+                        $("#txtED").val(txt);
+                    })
                 });
                 //////////////////////////////////////////////////////////
 
