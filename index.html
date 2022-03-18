@@ -175,7 +175,7 @@
         <div style="padding-top: 50px;"></div>
         <div class="container">
             <h4 id="modular-multiplicative-inverse">Modular Multiplicative Inverse</h4>
-            <small id="helpId" class="form-text text-muted">Click to select n</small>
+            <small id="helpId" class="form-text text-muted">Click to select Z<sub>p</sub></small>
             <div class="row">
                 <div class="col-2">
                     <div class="list-group">
@@ -243,7 +243,7 @@
                             <div style="margin-top: 10px;"></div>
                             <div class="form-group" style="text-align: center;">
                                 <button type="button" class="btn btn-warning" id="btnFindAnyCoprime"
-                                    style="padding: 0.375rem 3rem;">Find Any E ∈ U(Z<sub>p</sub>)</button>
+                                    style="padding: 0.375rem 3rem;">Find coprime E ∈ U(Z<sub>p</sub>)</button>
                             </div>
                         </div>
                     </div>
@@ -380,6 +380,11 @@
                                     <input type="number" class="form-control" name="E" id="E" value="5"
                                         aria-describedby="helpId" placeholder="E">
                                     <small id="helpId" class="form-text text-muted">E ∈ U(Z<sub>p-1</sub>)</small>
+                                </div>
+                                <div style="margin-top: 10px;"></div>
+                                <div class="form-group" style="text-align: center;">
+                                    <button type="button" class="btn btn-warning" id="btnCoprimeE"
+                                        style="padding: 0.375rem 3rem;">Find coprime</button>
                                 </div>
                             </div>
                         </div>
@@ -609,6 +614,11 @@
                                         aria-describedby="helpId" placeholder="E">
                                     <small id="helpId" class="form-text text-muted">E ∈ U(Z<sub>ϕ(n)</sub>)</small>
                                 </div>
+                                <div style="margin-top: 10px;"></div>
+                                <div class="form-group" style="text-align: center;">
+                                    <button type="button" class="btn btn-warning" id="btnFindCoprimeE"
+                                        style="padding: 0.375rem 3rem;">Find coprime</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -815,6 +825,19 @@
                     });
                 });
 
+                $("#btnCoprimeE").click(function () {
+                    let p = BigInt($("#p").val()) - 1n;
+                    let oldE = BigInt($("#E").val());
+                    for (let i = (p / 2n); i < p; i++) {
+                        console.log(i + " ");
+                        if (gcd(i, p) == 1n) {
+                            if (oldE != i) {
+                                $("#E").val(i);
+                                break;
+                            }
+                        }
+                    }
+                })
                 $("#btnEncryption").click(() => {
                     let x = BigInt($("#x").val());
                     let E = BigInt($("#E").val());
@@ -853,6 +876,18 @@
                     let ranInt = BigInt(Math.floor(Math.random() * 100000000000));
                     let num = (ranInt * p) / 100000000000n;
                     $("#txtx").val(num);
+                })
+                $("#btnFindCoprimeE").click(function () {
+                    let n = BigInt($("#phin").val());
+                    let oldE = BigInt($("#txtE").val());
+                    for (let i = (n / 2n); i < n; i++) {
+                        if (gcd(i, n) == 1n) {
+                            if (oldE != i) {
+                                $("#txtE").val(i);
+                                break;
+                            }
+                        }
+                    }
                 })
                 $("#btnEncrypt").click(() => {
                     let x = BigInt($("#txtx").val());
@@ -978,13 +1013,13 @@
                     let p = BigInt($("#textP").val());
                     console.log("sdfsd : " + p);
                     for (let i = (p / 2n); i < p; i++) {
-                        console.log(i + " ");
                         if (gcd(i, p) == 1n) {
                             $("#textE").val(i);
                             break;
                         }
                     }
                 })
+
                 ///////////////////////////////////////////////////
                 $("#btnMulti").click(function () {
                     console.log("sdfds");
