@@ -12,12 +12,21 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-
+    <style>
+        [id]::before {
+            content: '';
+            display: block;
+            height: 75px;
+            margin-top: -75px;
+            visibility: hidden;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark"
+        style="position: -webkit-sticky; position: sticky; top: 0; width: 100%; z-index: 99; overflow: hidden;">
         <div class="container">
             <a class="navbar-brand" href="https://hmthanh.github.io/rsa/">
                 <svg width="30px" height="30px" viewBox="0 0 256 250" version="1.1" style="margin-right: 10px;"
@@ -35,8 +44,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                    <li class="nav-link active" href="#">Prime numbers</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#find-coprime">Find Coprime</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#prime-number">Prime numbers</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#modular-exponentiation">Modular Exponentiation</a>
@@ -52,68 +64,47 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid p-3 px-md-4 mb-3">
-        <div class="container">
-            <div class="row">
 
-            </div>
-        </div>
+    <div class="container-fluid p-3 px-md-4 mb-3">
         <div style="margin-top: 50px;"></div>
         <div class="container">
-            <h4 id="prime-number">Big prime numbers</h4>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                <label class="form-check-label" for="flexSwitchCheckChecked">Click to copy/select p</label>
-            </div>
+            <h4 id="find-coprime">Find coprime</h4>
+            <small id="helpId" class="form-text text-muted">Click to select n</small>
             <div class="row">
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="prime-number list-group-item">449</button>
-                        <button type="button" class="prime-number list-group-item">719</button>
-                        <button type="button" class="prime-number list-group-item">659</button>
-                        <button type="button" class="prime-number list-group-item">557</button>
+                        <button type="button" class="coprime-number list-group-item">449</button>
+                        <button type="button" class="coprime-number list-group-item">719</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="prime-number list-group-item">1789</button>
-                        <button type="button" class="prime-number list-group-item">2293</button>
-                        <button type="button" class="prime-number list-group-item">6719</button>
-                        <button type="button" class="prime-number list-group-item">8933</button>
+                        <button type="button" class="coprime-number list-group-item">1789</button>
+                        <button type="button" class="coprime-number list-group-item">2293</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="prime-number list-group-item">324617</button>
-                        <button type="button" class="prime-number list-group-item">125507</button>
-                        <button type="button" class="prime-number list-group-item">2585641</button>
-                        <button type="button" class="prime-number list-group-item">4244621</button>
-                    </div>
-                </div>
-
-
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="prime-number list-group-item">72437347</button>
-                        <button type="button" class="prime-number list-group-item">32437247</button>
-                        <button type="button" class="prime-number list-group-item">32438083</button>
-                        <button type="button" class="prime-number list-group-item">52436971</button>
+                        <button type="button" class="coprime-number list-group-item">41077</button>
+                        <button type="button" class="coprime-number list-group-item">692581</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="prime-number list-group-item">224364913</button>
-                        <button type="button" class="prime-number list-group-item">524364251</button>
-                        <button type="button" class="prime-number list-group-item">824366537</button>
-                        <button type="button" class="prime-number list-group-item">724365347</button>
+                        <button type="button" class="coprime-number list-group-item">324617</button>
+                        <button type="button" class="coprime-number list-group-item">125507</button>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="list-group">
-                        <button type="button" class="prime-number list-group-item">1243644097</button>
-                        <button type="button" class="prime-number list-group-item">9243643217</button>
-                        <button type="button" class="prime-number list-group-item">92436427169</button>
-                        <button type="button" class="prime-number list-group-item">924364254469</button>
+                        <button type="button" class="coprime-number list-group-item">72437347</button>
+                        <button type="button" class="coprime-number list-group-item">32437247</button>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="list-group">
+                        <button type="button" class="coprime-number list-group-item">224364913</button>
+                        <button type="button" class="coprime-number list-group-item">524364251</button>
                     </div>
                 </div>
 
@@ -121,122 +112,32 @@
         </div>
         <div style="margin-top: 20px;"></div>
         <div class="container">
-            <h4 id="modular-exponentiation">Modular Exponentiation in Z-p</h4>
             <div class="row">
-                <div class="col">
+                <div class="col-3">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">p</h4>
+                            <h4 class="card-title">n</h4>
                             <div class="form-group">
-                                <input type="number" class="form-control" name="p" value="17" id="p"
-                                    aria-describedby="helpId" placeholder="p">
-                                <small id="helpId" class="form-text text-muted">p is prime</small>
+                                <input type="number" class="form-control" name="cop" value="20" id="cop"
+                                    aria-describedby="helpId" placeholder="n">
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">x</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="x" id="x" value="8"
-                                    aria-describedby="helpId" placeholder="x">
-                                <small id="helpId" class="form-text text-muted">x ∈ Z<sub>p</sub></small>
-                            </div>
-                            <div style="padding-top: 10px;"></div>
+                            <div style="margin-top: 10px;"></div>
                             <div class="form-group" style="text-align: center;">
-                                <button type="button" class="btn btn-dark" id="randomX"
-                                    style="padding-left: 50px;padding-right: 50px;">Random</button>
+                                <button type="button" class="btn btn-success" id="btnCoprime"
+                                    style="padding: 0.375rem 3rem;">Find Coprime</button>
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-9">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">E</h4>
+                            <h4 class="card-title">Coprime</h4>
                             <div class="form-group">
-                                <input type="number" class="form-control" name="E" id="E" value="5"
-                                    aria-describedby="helpId" placeholder="E">
-                                <small id="helpId" class="form-text text-muted">E ∈ U(Z<sub>p-1</sub>)</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">D</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="D" id="D" value="13"
-                                    aria-describedby="D" placeholder="D">
-                                <small id="helpD" class="form-text text-muted">D ∈ <sub>p-1</sub></small>
-                            </div>
-                            <div style="padding-top: 10px;"></div>
-                            <div class="form-group" style="text-align: center;">
-                                <button type="button" class="btn btn-danger" id="inverse1"
-                                    style="padding: 0.375rem 1.75rem;">Multiplicative Inverse</button>
-                            </div>
-                            <!-- <div style="padding-top: 10px;"></div>
-                            <div class="form-group" style="text-align: center;">
-                                <button type="button" class="btn btn-warning" id="inverse2"
-                                    style="padding: 0.375rem 1.75rem;">Fast Inverse</button>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div style="padding: 10px; text-align: center;">
-                    <!-- m = x^E mod p -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-success" id="btnEncryption"
-                                        style="width: 100%;">Encryption</button>
-                                </div>
-                            </div>
-                            <div class="col-3 align-middle" style="text-align: center;">
-                                <div class="align-middle" style="display: flex;
-                                justify-content: center;align-items: center;height: 100%;">
-                                    m = x^E mod p
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <input type="number" class="form-control" name="encryption" id="encryption"
-                                    aria-describedby="helpId" placeholder="m = x^E mod p">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding-top: 10px;">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="btnDecryption"
-                                        style="width: 100%;">Decryption</button>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="align-middle" style="display: flex;
-                                justify-content: center;align-items: center;height: 100%;">
-                                    x = m^D mod p
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <input type="number" class="form-control" name="decrypt" id="decrypt"
-                                    aria-describedby="helpDecrypt" placeholder="x = m^D mod p">
+                                <input type="text" class="form-control" name="txtPrime" value="" id="txtPrime"
+                                    aria-describedby="helpId" placeholder="">
+                                <small id="helpId" class="form-text text-muted">All Coprime ∈ U(Z<sub>n</sub>)</small>
                             </div>
                         </div>
                     </div>
@@ -246,496 +147,729 @@
         <div style="padding-top: 50px;"></div>
         <hr />
 
+        <div class="container-fluid p-3 px-md-4 mb-3">
+            <div class="container">
+                <div class="row">
 
-
-
-
-        <div style="margin-top: 50px;"></div>
-
-        <div class="container">
-            <h4 id="rsa-nav">RSA</h4>
-            <div class="row">
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">p</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="txtp" value="61" id="txtp"
-                                    aria-describedby="helpId" placeholder="p">
-                                <small id="helpId" class="form-text text-muted">p is prime</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="p-primes list-group-item">619</button>
-                        <button type="button" class="p-primes list-group-item">859</button>
-                        <button type="button" class="p-primes list-group-item">1249</button>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="p-primes list-group-item">2663</button>
-                        <button type="button" class="p-primes list-group-item">3593</button>
-                        <button type="button" class="p-primes list-group-item">5641</button>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="p-primes list-group-item">41077</button>
-                        <button type="button" class="p-primes list-group-item">613471</button>
-                        <button type="button" class="p-primes list-group-item">5124263</button>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="p-primes list-group-item">21237343</button>
-                        <button type="button" class="p-primes list-group-item">37236071</button>
-                        <button type="button" class="p-primes list-group-item">772351421</button>
-                    </div>
                 </div>
             </div>
-            <div style="margin-top:20px;"></div>
-            <div class="row">
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">q</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="txtq" value="53" id="txtq"
-                                    aria-describedby="helpId" placeholder="q">
-                                <small id="helpId" class="form-text text-muted">q is prime</small>
-                            </div>
+            <div style="margin-top: 50px;"></div>
+            <div class="container">
+                <h4 id="prime-number">Big prime numbers</h4>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Click to copy/select
+                        <sub>p</sub></label>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="prime-number list-group-item">449</button>
+                            <button type="button" class="prime-number list-group-item">719</button>
+                            <button type="button" class="prime-number list-group-item">659</button>
+                            <button type="button" class="prime-number list-group-item">557</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="q-primes list-group-item">433</button>
-                        <button type="button" class="q-primes list-group-item">1039</button>
-                        <button type="button" class="q-primes list-group-item">1847</button>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="prime-number list-group-item">1789</button>
+                            <button type="button" class="prime-number list-group-item">2293</button>
+                            <button type="button" class="prime-number list-group-item">6719</button>
+                            <button type="button" class="prime-number list-group-item">8933</button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="q-primes list-group-item">4421</button>
-                        <button type="button" class="q-primes list-group-item">5419</button>
-                        <button type="button" class="q-primes list-group-item">6053</button>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="prime-number list-group-item">324617</button>
+                            <button type="button" class="prime-number list-group-item">125507</button>
+                            <button type="button" class="prime-number list-group-item">2585641</button>
+                            <button type="button" class="prime-number list-group-item">4244621</button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="q-primes list-group-item">39359</button>
-                        <button type="button" class="q-primes list-group-item">692581</button>
-                        <button type="button" class="q-primes list-group-item">5826133</button>
+
+
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="prime-number list-group-item">72437347</button>
+                            <button type="button" class="prime-number list-group-item">32437247</button>
+                            <button type="button" class="prime-number list-group-item">32438083</button>
+                            <button type="button" class="prime-number list-group-item">52436971</button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-2">
-                    <div class="list-group">
-                        <button type="button" class="q-primes list-group-item">64236869</button>
-                        <button type="button" class="q-primes list-group-item">15236141</button>
-                        <button type="button" class="q-primes list-group-item">872352851</button>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="prime-number list-group-item">224364913</button>
+                            <button type="button" class="prime-number list-group-item">524364251</button>
+                            <button type="button" class="prime-number list-group-item">824366537</button>
+                            <button type="button" class="prime-number list-group-item">724365347</button>
+                        </div>
                     </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="prime-number list-group-item">1243644097</button>
+                            <button type="button" class="prime-number list-group-item">9243643217</button>
+                            <button type="button" class="prime-number list-group-item">92436427169</button>
+                            <button type="button" class="prime-number list-group-item">924364254469</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div style="margin-top:20px;"></div>
-            <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">n</h4>
-                            <div class="form-group">
-                                <input type="number" disabled="true" class="form-control" name="txtn" value="3233"
-                                    id="txtn" aria-describedby="helpId" placeholder="n">
-                                <small id="helpId" class="form-text text-muted">n = p * q</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">ϕ(n)</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="phin" value="780" id="phin"
-                                    aria-describedby="helpId" placeholder="phin">
-                                <small id="helpId" class="form-text text-muted">ϕ(n) = lcm(p − 1, q − 1)</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">x</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="txtx" id="txtx" value="65"
-                                    aria-describedby="helpId" placeholder="x">
-                                <small id="helpId" class="form-text text-muted">x ∈ Z<sub>p</sub></small>
-                            </div>
-                            <div style="padding-top: 10px;"></div>
-                            <div class="form-group" style="text-align: center;">
-                                <button type="button" class="btn btn-dark" id="btnRandom"
-                                    style="padding-left: 50px;padding-right: 50px;">Random</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">E</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="txtE" id="txtE" value="17"
-                                    aria-describedby="helpId" placeholder="E">
-                                <small id="helpId" class="form-text text-muted">E ∈ U(Z<sub>ϕ(n)</sub>)</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">D</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="txtD" id="txtD" value="413"
-                                    aria-describedby="D" placeholder="D">
-                                <small id="helpD" class="form-text text-muted">D ∈ Z<sub>ϕ(n)</sub></small>
-                            </div>
-                            <div style="padding-top: 10px;"></div>
-                            <div class="form-group" style="text-align: center;">
-                                <button type="button" class="btn btn-danger" id="btnInverse"
-                                    style="padding: 0.375rem 1.75rem;">Multiplicative Inverse</button>
-                            </div>
-                            <div style="padding-top: 10px;"></div>
-                            <div class="form-group" style="text-align: center;">
-                                <button type="button" class="btn btn-warning" id="btnFastInverse"
-                                    style="padding: 0.375rem 1.75rem;">Fast Inverse</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div style="padding: 10px; text-align: center;">
-                    <!-- m = x^E mod p -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3">
+            <div style="margin-top: 20px;"></div>
+            <div class="container">
+                <h4 id="modular-exponentiation">Modular Exponentiation in Z<sub>p</sub></h4>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">p</h4>
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-success" id="btnEncrypt"
-                                        style="width: 100%;">RSA Encryption</button>
+                                    <input type="number" class="form-control" name="p" value="17" id="p"
+                                        aria-describedby="helpId" placeholder="p">
+                                    <small id="helpId" class="form-text text-muted">p is prime</small>
                                 </div>
-                            </div>
-                            <div class="col-3 align-middle" style="text-align: center;">
-                                <div class="align-middle" style="display: flex;
-                                justify-content: center;align-items: center;height: 100%;">
-                                    m = x^E mod n
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <input type="number" class="form-control" name="txtEncrypt" id="txtEncrypt"
-                                    aria-describedby="helpId" placeholder="m = x^E mod n">
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row" style="padding-top: 10px;">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">x</h4>
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="btnDecrypt"
-                                        style="width: 100%;">RSA Decryption</button>
+                                    <input type="number" class="form-control" name="x" id="x" value="8"
+                                        aria-describedby="helpId" placeholder="x">
+                                    <small id="helpId" class="form-text text-muted">x ∈ Z<sub>p</sub></small>
+                                </div>
+                                <div style="padding-top: 10px;"></div>
+                                <div class="form-group" style="text-align: center;">
+                                    <button type="button" class="btn btn-dark" id="randomX"
+                                        style="padding-left: 50px;padding-right: 50px;">Random</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">E</h4>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="E" id="E" value="5"
+                                        aria-describedby="helpId" placeholder="E">
+                                    <small id="helpId" class="form-text text-muted">E ∈ U(Z<sub>p-1</sub>)</small>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="align-middle" style="display: flex;
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">D</h4>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="D" id="D" value="13"
+                                        aria-describedby="D" placeholder="D">
+                                    <small id="helpD" class="form-text text-muted">D ∈ <sub>p-1</sub></small>
+                                </div>
+                                <div style="padding-top: 10px;"></div>
+                                <div class="form-group" style="text-align: center;">
+                                    <button type="button" class="btn btn-danger" id="inverse"
+                                        style="padding: 0.375rem 1.75rem;">Multiplicative Inverse</button>
+                                </div>
+                                <div style="padding-top: 10px;"></div>
+                                <div class="form-group" style="text-align: center;">
+                                    <button type="button" class="btn btn-warning" id="fastInverse"
+                                        style="padding: 0.375rem 1.75rem;">Fast Inverse</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div style="padding: 10px; text-align: center;">
+                        <!-- m = x<sup>E</sup> &nbsp;mod p -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success" id="btnEncryption"
+                                            style="width: 100%;">Encryption</button>
+                                    </div>
+                                </div>
+                                <div class="col-3 align-middle" style="text-align: center;">
+                                    <div class="align-middle" style="display: flex;
                                 justify-content: center;align-items: center;height: 100%;">
-                                    x = m^D mod n
+                                        m = x<sup>E</sup> &nbsp;mod p
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control" name="encryption" id="encryption"
+                                        aria-describedby="helpId" placeholder="m = x^E mod p">
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <input type="number" class="form-control" name="txtDecrypt" id="txtDecrypt"
-                                    aria-describedby="helpDecrypt" placeholder="x = m^D mod n">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" id="btnDecryption"
+                                            style="width: 100%;">Decryption</button>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="align-middle" style="display: flex;
+                                justify-content: center;align-items: center;height: 100%;">
+                                        x = m<sup>D</sup> &nbsp;mod p
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control" name="decrypt" id="decrypt"
+                                        aria-describedby="helpDecrypt" placeholder="x = m^D mod p">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div style="padding-top: 50px;"></div>
+            <hr />
+
+            <div style="margin-top: 50px;"></div>
+
+            <div class="container">
+                <h4 id="rsa-nav">RSA</h4>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">p</h4>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="txtp" value="61" id="txtp"
+                                        aria-describedby="helpId" placeholder="p">
+                                    <small id="helpId" class="form-text text-muted">p is prime</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="p-primes list-group-item">619</button>
+                            <button type="button" class="p-primes list-group-item">859</button>
+                            <button type="button" class="p-primes list-group-item">1249</button>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="p-primes list-group-item">2663</button>
+                            <button type="button" class="p-primes list-group-item">3593</button>
+                            <button type="button" class="p-primes list-group-item">5641</button>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="p-primes list-group-item">41077</button>
+                            <button type="button" class="p-primes list-group-item">613471</button>
+                            <button type="button" class="p-primes list-group-item">5124263</button>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="p-primes list-group-item">21237343</button>
+                            <button type="button" class="p-primes list-group-item">37236071</button>
+                            <button type="button" class="p-primes list-group-item">772351421</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:20px;"></div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">q</h4>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="txtq" value="53" id="txtq"
+                                        aria-describedby="helpId" placeholder="q">
+                                    <small id="helpId" class="form-text text-muted">q is prime</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="q-primes list-group-item">433</button>
+                            <button type="button" class="q-primes list-group-item">1039</button>
+                            <button type="button" class="q-primes list-group-item">1847</button>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="q-primes list-group-item">4421</button>
+                            <button type="button" class="q-primes list-group-item">5419</button>
+                            <button type="button" class="q-primes list-group-item">6053</button>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="q-primes list-group-item">39359</button>
+                            <button type="button" class="q-primes list-group-item">692581</button>
+                            <button type="button" class="q-primes list-group-item">5826133</button>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="list-group">
+                            <button type="button" class="q-primes list-group-item">64236869</button>
+                            <button type="button" class="q-primes list-group-item">15236141</button>
+                            <button type="button" class="q-primes list-group-item">872352851</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:20px;"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">n</h4>
+                                <div class="form-group">
+                                    <input type="number" disabled="true" class="form-control" name="txtn" value="3233"
+                                        id="txtn" aria-describedby="helpId" placeholder="n">
+                                    <small id="helpId" class="form-text text-muted">n = p * q</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">ϕ(n)</h4>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="phin" value="780" id="phin"
+                                        aria-describedby="helpId" placeholder="phin">
+                                    <small id="helpId" class="form-text text-muted">ϕ(n) = lcm(p − 1, q − 1)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">x</h4>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="txtx" id="txtx" value="65"
+                                        aria-describedby="helpId" placeholder="x">
+                                    <small id="helpId" class="form-text text-muted">x ∈ Z<sub>p</sub></small>
+                                </div>
+                                <div style="padding-top: 10px;"></div>
+                                <div class="form-group" style="text-align: center;">
+                                    <button type="button" class="btn btn-dark" id="btnRandom"
+                                        style="padding-left: 50px;padding-right: 50px;">Random</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">E</h4>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="txtE" id="txtE" value="17"
+                                        aria-describedby="helpId" placeholder="E">
+                                    <small id="helpId" class="form-text text-muted">E ∈ U(Z<sub>ϕ(n)</sub>)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">D</h4>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="txtD" id="txtD" value="413"
+                                        aria-describedby="D" placeholder="D">
+                                    <small id="helpD" class="form-text text-muted">D ∈ Z<sub>ϕ(n)</sub></small>
+                                </div>
+                                <div style="padding-top: 10px;"></div>
+                                <div class="form-group" style="text-align: center;">
+                                    <button type="button" class="btn btn-danger" id="btnInverse"
+                                        style="padding: 0.375rem 1.75rem;">Multiplicative Inverse</button>
+                                </div>
+                                <div style="padding-top: 10px;"></div>
+                                <div class="form-group" style="text-align: center;">
+                                    <button type="button" class="btn btn-warning" id="btnFastInverse"
+                                        style="padding: 0.375rem 1.75rem;">Fast Inverse</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div style="padding: 10px; text-align: center;">
+                        <!-- m = x<sup>E</sup> &nbsp;mod p -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success" id="btnEncrypt"
+                                            style="width: 100%;">RSA Encryption</button>
+                                    </div>
+                                </div>
+                                <div class="col-3 align-middle" style="text-align: center;">
+                                    <div class="align-middle" style="display: flex;
+                                justify-content: center;align-items: center;height: 100%;">
+                                        m = x<sup>E</sup> &nbsp;mod n
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control" name="txtEncrypt" id="txtEncrypt"
+                                        aria-describedby="helpId" placeholder="m = x^E mod n">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" id="btnDecrypt"
+                                            style="width: 100%;">RSA Decryption</button>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="align-middle" style="display: flex;
+                                justify-content: center;align-items: center;height: 100%;">
+                                        x = m<sup>D</sup> &nbsp;mod n
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control" name="txtDecrypt" id="txtDecrypt"
+                                        aria-describedby="helpDecrypt" placeholder="x = m^D mod n">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:50px;"></div>
+            <hr />
         </div>
-        <div style="margin-top:50px;"></div>
-        <hr />
-    </div>
-    <script>
-        $(document).ready(function () {
-            function modulo(x, E, p) {
-                let module = 1n;
-                for (let i = 0n; i < E; i++) {
-                    module = (module * x) % p;
-                    // console.log("[" + i + "] " + "p=" + p + "; x=" + x +  "; E=" + E + " => encrypt = " + encrypt);
+        <script>
+            $(document).ready(function () {
+                function gcd(a, b) {
+                    if (b == 0)
+                        return a;
+                    return gcd(b, a % b);
                 }
-                return module;
-            }
 
-            function modInverse1(E, p) {
-                for (let num = 1n; num < p; num++) {
-                    if (((E % p) * (num % p)) % p == 1) {
-                        return num;
-                    }
-                }
-            };
-
-            function gcd(a, b) {
-                if (b == 0)
-                    return a;
-                return gcd(b, a % b);
-            }
-
-            function lcm(a, b) {
-                return (a / gcd(a, b)) * b;
-            }
-
-            // function modInverse2(E, p) {
-            //     console.log("E : " + E + "\np " + p);
-            //     return modulo(E, p - 3n, p);
-            // };
-
-            function fastInverse(E, phin) {
-                return modulo(E, phin - 2n, phin);
-            }
-
-            $(".prime-number").click(function () {
-                let isCheck = $("#flexSwitchCheckChecked")[0];
-                let prime = $(this)[0];
-                console.log(prime.innerText);
-                navigator.clipboard.writeText(prime.innerText);
-
-                if (isCheck.checked) {
-                    $("#p").val(prime.innerText);
-                }
-            })
-
-            $("#inverse1").click(() => {
-                let E = BigInt($("#E").val());
-                let p = BigInt($("#p").val());
-
-                let invPromise = new Promise((resolve, reject) => {
-                    try {
-                        // let inv;// = modInverse1(E, p - 1n);
-                        // let inv = modInverse1(E, p - 1n);
-                        let m = p - 1n;
-                        for (let num = 1n; num < m; num++) {
-                            if (((E % m) * (num % m)) % m == 1) {
-                                resolve(num);
-                                return num;
+                $("#btnCoprime").click(function () {
+                    let n = BigInt($("#cop").val());
+                    let coprime = "";
+                    if (n <= 3n) {
+                        for (let i = 1n; i <= n; i++) {
+                            coprime += i + " ";
+                        }
+                    } else {
+                        coprime = "1 2 3 ";
+                        for (let i = 4n; i < n; i++) {
+                            if (gcd(i, n) == 1n) {
+                                coprime += i + " ";
                             }
                         }
-                    } catch (error) {
-                        reject(error);
                     }
+                    console.log("coprime" + coprime);
+                    $("#txtPrime").val(coprime);
                 });
+                //////////////////////////////////////////////////////////
+                function modulo(x, E, p) {
+                    let module = 1n;
+                    for (let i = 0n; i < E; i++) {
+                        module = (module * x) % p;
+                        // console.log("[" + i + "] " + "p=" + p + "; x=" + x +  "; E=" + E + " => encrypt = " + encrypt);
+                    }
+                    return module;
+                }
 
-                invPromise.then(inv => {
-                    $("#D").val(inv);
-                }).catch((err) => {
-                    console.log(err);
+
+
+                function lcm(a, b) {
+                    return (a / gcd(a, b)) * b;
+                }
+
+                function fastInverse(E, phin) {
+                    let phi = phin;
+                    let y = 0n, x = 1n;
+
+                    if (phin == 1n)
+                        return 0n;
+
+                    while (E > 1n) {
+                        let q = E / phin;
+                        let t = phin;
+
+                        phin = E % phin, E = t;
+                        t = y;
+
+                        y = x - q * y;
+                        x = t;
+                    }
+
+                    if (x < 0n)
+                        x += phi;
+
+                    return x;
+                }
+
+                $(".prime-number").click(function () {
+                    let isCheck = $("#flexSwitchCheckChecked")[0];
+                    let prime = $(this)[0];
+                    console.log(prime.innerText);
+                    navigator.clipboard.writeText(prime.innerText);
+
+                    if (isCheck.checked) {
+                        $("#p").val(prime.innerText);
+                    }
                 })
-            });
-            $("#inverse2").click(() => {
-                let E = BigInt($("#E").val());
-                let p = BigInt($("#p").val());
 
-                // let inv = modInverse2(E, p - 1n);
-                let inv = modInverse2(E, p - 1n);
-                $("#D").val(inv);
-            });
+                $(".coprime-number").click(function () {
+                    let prime = $(this)[0];
+                    console.log(prime.innerText);
+                    navigator.clipboard.writeText(prime.innerText);
 
-            $("#btnEncryption").click(() => {
-                let x = BigInt($("#x").val());
-                let E = BigInt($("#E").val());
-                let p = BigInt($("#p").val());
-
-                let encrypt = modulo(x, E, p);
-
-                $("#encryption").val(encrypt);
-                $("#encryption").prop('disabled', true);
-            })
+                    $("#cop").val(prime.innerText);
+                })
 
 
-            $("#randomX").click(() => {
-                let p = BigInt($("#p").val());
-                let ranInt = BigInt(Math.floor(Math.random() * 100000000000));
-                let num = (ranInt * p) / 100000000000n;
-                $("#x").val(num);
-            })
+                $("#inverse").click(() => {
+                    let E = BigInt($("#E").val());
+                    let p = BigInt($("#p").val());
 
-
-            $("#btnDecryption").click(() => {
-                let p = BigInt($("#p").val());
-                let x = BigInt($("#x").val());
-                let D = BigInt($("#D").val());
-                let encoded = BigInt($("#encryption").val());
-
-                let decrypt = modulo(encoded, D, p);
-
-                $("#decrypt").val(decrypt);
-                $("#decrypt").prop('disabled', true);
-            })
-            //////////////////////////////////////////////////////////
-            $("#btnRandom").click(() => {
-                let p = BigInt($("#txtn").val());
-                let ranInt = BigInt(Math.floor(Math.random() * 100000000000));
-                let num = (ranInt * p) / 100000000000n;
-                $("#txtx").val(num);
-            })
-            $("#btnEncrypt").click(() => {
-                let x = BigInt($("#txtx").val());
-                let E = BigInt($("#txtE").val());
-                let n = BigInt($("#txtn").val());
-
-                let encrypt = modulo(x, E, n);
-
-                $("#txtEncrypt").val(encrypt);
-                $("#txtEncrypt").prop('disabled', true);
-            })
-            $("#btnDecrypt").click(() => {
-                let x = BigInt($("#txtx").val());
-                let D = BigInt($("#txtD").val());
-                let n = BigInt($("#txtn").val());
-                let encoded = BigInt($("#txtEncrypt").val());
-
-                let decrypt = modulo(encoded, D, n);
-
-                $("#txtDecrypt").val(decrypt);
-                $("#txtDecrypt").prop('disabled', true);
-            })
-
-
-            function updateN() {
-                let p = BigInt($("#txtp").val());
-                let q = BigInt($("#txtq").val());
-                let n = p * q;
-                $("#txtn").val(n);
-                let phin = lcm(p - 1n, q - 1n);
-                $("#phin").val(phin);
-            }
-            $(".p-primes").click(function () {
-                let prime = $(this)[0];
-                navigator.clipboard.writeText(prime.innerText);
-                $("#txtp").val(prime.innerText);
-                updateN();
-            })
-            $(".q-primes").click(function () {
-                let prime = $(this)[0];
-                navigator.clipboard.writeText(prime.innerText);
-                $("#txtq").val(prime.innerText);
-                updateN();
-            })
-
-            $("#txtp").on("change paste keyup", function () {
-                updateN();
-            });
-            $("#txtq").on("change paste keyup", function () {
-                updateN();
-            });
-
-            $("#btnInverse").click(() => {
-                console.log("start inverse");
-                let E = BigInt($("#txtE").val());
-                let phin = BigInt($("#phin").val());
-
-                let invPromise = new Promise((resolve, reject) => {
-                    try {
-                        let m = phin;
-                        for (let num = 1n; num < m; num++) {
-                            if (((E % m) * (num % m)) % m == 1) {
-                                resolve(num);
-                                return num;
+                    let invPromise = new Promise((resolve, reject) => {
+                        try {
+                            let m = p - 1n;
+                            for (let num = 1n; num < m; num++) {
+                                if (((E % m) * (num % m)) % m == 1) {
+                                    resolve(num);
+                                    return num;
+                                }
                             }
+                        } catch (error) {
+                            reject(error);
                         }
-                    } catch (error) {
-                        reject(error);
-                    }
+                    });
+
+                    invPromise.then(inv => {
+                        $("#D").val(inv);
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+                });
+                $("#fastInverse").click(() => {
+                    let E = BigInt($("#E").val());
+                    let p = BigInt($("#p").val());
+
+                    let invPromise = new Promise((resolve, reject) => {
+                        try {
+                            let inv = fastInverse(E, p - 1n);
+                            resolve(inv);
+                        } catch (error) {
+                            reject(error);
+                        }
+                    });
+
+                    invPromise.then(inv => {
+                        $("#D").val(inv);
+                    })
                 });
 
-                invPromise.then(inv => {
-                    $("#txtD").val(inv);
+                $("#btnEncryption").click(() => {
+                    let x = BigInt($("#x").val());
+                    let E = BigInt($("#E").val());
+                    let p = BigInt($("#p").val());
+
+                    let encrypt = modulo(x, E, p);
+
+                    $("#encryption").val(encrypt);
+                    $("#encryption").prop('disabled', true);
                 })
-            });
 
-            $("#btnFastInverse").click(() => {
-                let E = BigInt($("#txtE").val());
-                let phin = BigInt($("#phin").val());
 
-                let invPromise = new Promise((resolve, reject) => {
-                    try {
-                        // let m = phin;
-                        // for (let num = 1n; num < m; num++) {
-                        //     if (((E % m) * (num % m)) % m == 1) {
-                        //         resolve(num);
-                        //         return num;
-                        //     }
-                        // }
-                        let inv = fastInverse(E, phin - 1n);
-                        resolve(inv);
-                    } catch (error) {
-                        reject(error);
-                    }
+                $("#randomX").click(() => {
+                    let p = BigInt($("#p").val());
+                    let ranInt = BigInt(Math.floor(Math.random() * 100000000000));
+                    let num = (ranInt * p) / 100000000000n;
+                    $("#x").val(num);
+                })
+
+
+                $("#btnDecryption").click(() => {
+                    let p = BigInt($("#p").val());
+                    let x = BigInt($("#x").val());
+                    let D = BigInt($("#D").val());
+                    let encoded = BigInt($("#encryption").val());
+
+                    let decrypt = modulo(encoded, D, p);
+
+                    $("#decrypt").val(decrypt);
+                    $("#decrypt").prop('disabled', true);
+                })
+
+                //////////////////////////////////////////////////////////
+                $("#btnRandom").click(() => {
+                    let p = BigInt($("#txtn").val());
+                    let ranInt = BigInt(Math.floor(Math.random() * 100000000000));
+                    let num = (ranInt * p) / 100000000000n;
+                    $("#txtx").val(num);
+                })
+                $("#btnEncrypt").click(() => {
+                    let x = BigInt($("#txtx").val());
+                    let E = BigInt($("#txtE").val());
+                    let n = BigInt($("#txtn").val());
+
+                    let encrypt = modulo(x, E, n);
+
+                    $("#txtEncrypt").val(encrypt);
+                    $("#txtEncrypt").prop('disabled', true);
+                })
+                $("#btnDecrypt").click(() => {
+                    let x = BigInt($("#txtx").val());
+                    let D = BigInt($("#txtD").val());
+                    let n = BigInt($("#txtn").val());
+                    let encoded = BigInt($("#txtEncrypt").val());
+
+                    let decrypt = modulo(encoded, D, n);
+
+                    $("#txtDecrypt").val(decrypt);
+                    $("#txtDecrypt").prop('disabled', true);
+                })
+
+
+                function updateN() {
+                    let p = BigInt($("#txtp").val());
+                    let q = BigInt($("#txtq").val());
+                    let n = p * q;
+                    $("#txtn").val(n);
+                    let phin = lcm(p - 1n, q - 1n);
+                    $("#phin").val(phin);
+                }
+                $(".p-primes").click(function () {
+                    let prime = $(this)[0];
+                    navigator.clipboard.writeText(prime.innerText);
+                    $("#txtp").val(prime.innerText);
+                    updateN();
+                })
+                $(".q-primes").click(function () {
+                    let prime = $(this)[0];
+                    navigator.clipboard.writeText(prime.innerText);
+                    $("#txtq").val(prime.innerText);
+                    updateN();
+                })
+
+                $("#txtp").on("change paste keyup", function () {
+                    updateN();
+                });
+                $("#txtq").on("change paste keyup", function () {
+                    updateN();
                 });
 
-                invPromise.then(inv => {
-                    $("#txtD").val(inv);
-                })
+                $("#btnInverse").click(() => {
+                    console.log("start inverse");
+                    let E = BigInt($("#txtE").val());
+                    let phin = BigInt($("#phin").val());
+
+                    let invPromise = new Promise((resolve, reject) => {
+                        try {
+                            let m = phin;
+                            for (let num = 1n; num < m; num++) {
+                                if (((E % m) * (num % m)) % m == 1) {
+                                    resolve(num);
+                                    return num;
+                                }
+                            }
+                        } catch (error) {
+                            reject(error);
+                        }
+                    });
+
+                    invPromise.then(inv => {
+                        $("#txtD").val(inv);
+                    })
+                });
+
+
+                $("#btnFastInverse").click(() => {
+                    let E = BigInt($("#txtE").val());
+                    let phin = BigInt($("#phin").val());
+                    console.log("E : " + E + " ; phin : " + phin);
+
+                    let invPromise = new Promise((resolve, reject) => {
+                        try {
+                            let inv = fastInverse(E, phin);
+                            console.log("fast inverse : " + inv);
+                            resolve(inv);
+                        } catch (error) {
+                            reject(error);
+                        }
+                    });
+
+                    invPromise.then(inv => {
+                        $("#txtD").val(inv);
+                    })
+                });
             });
-        });
 
-    </script>
-    <footer class="text-center">
-        <!-- Grid container -->
-        <div class="container pt-4 box">
-            <!-- Section: Social media -->
-            <section class="mb-4" id="source-code">
-                <svg width="30px" height="30px" viewBox="0 0 256 250" version="1.1" style="margin-right: 10px;"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    preserveAspectRatio="xMidYMid">
-                    <g>
-                        <path
-                            d="M128.00106,0 C57.3172926,0 0,57.3066942 0,128.00106 C0,184.555281 36.6761997,232.535542 87.534937,249.460899 C93.9320223,250.645779 96.280588,246.684165 96.280588,243.303333 C96.280588,240.251045 96.1618878,230.167899 96.106777,219.472176 C60.4967585,227.215235 52.9826207,204.369712 52.9826207,204.369712 C47.1599584,189.574598 38.770408,185.640538 38.770408,185.640538 C27.1568785,177.696113 39.6458206,177.859325 39.6458206,177.859325 C52.4993419,178.762293 59.267365,191.04987 59.267365,191.04987 C70.6837675,210.618423 89.2115753,204.961093 96.5158685,201.690482 C97.6647155,193.417512 100.981959,187.77078 104.642583,184.574357 C76.211799,181.33766 46.324819,170.362144 46.324819,121.315702 C46.324819,107.340889 51.3250588,95.9223682 59.5132437,86.9583937 C58.1842268,83.7344152 53.8029229,70.715562 60.7532354,53.0843636 C60.7532354,53.0843636 71.5019501,49.6441813 95.9626412,66.2049595 C106.172967,63.368876 117.123047,61.9465949 128.00106,61.8978432 C138.879073,61.9465949 149.837632,63.368876 160.067033,66.2049595 C184.49805,49.6441813 195.231926,53.0843636 195.231926,53.0843636 C202.199197,70.715562 197.815773,83.7344152 196.486756,86.9583937 C204.694018,95.9223682 209.660343,107.340889 209.660343,121.315702 C209.660343,170.478725 179.716133,181.303747 151.213281,184.472614 C155.80443,188.444828 159.895342,196.234518 159.895342,208.176593 C159.895342,225.303317 159.746968,239.087361 159.746968,243.303333 C159.746968,246.709601 162.05102,250.70089 168.53925,249.443941 C219.370432,232.499507 256,184.536204 256,128.00106 C256,57.3066942 198.691187,0 128.00106,0 Z M47.9405593,182.340212 C47.6586465,182.976105 46.6581745,183.166873 45.7467277,182.730227 C44.8183235,182.312656 44.2968914,181.445722 44.5978808,180.80771 C44.8734344,180.152739 45.876026,179.97045 46.8023103,180.409216 C47.7328342,180.826786 48.2627451,181.702199 47.9405593,182.340212 Z M54.2367892,187.958254 C53.6263318,188.524199 52.4329723,188.261363 51.6232682,187.366874 C50.7860088,186.474504 50.6291553,185.281144 51.2480912,184.70672 C51.8776254,184.140775 53.0349512,184.405731 53.8743302,185.298101 C54.7115892,186.201069 54.8748019,187.38595 54.2367892,187.958254 Z M58.5562413,195.146347 C57.7719732,195.691096 56.4895886,195.180261 55.6968417,194.042013 C54.9125733,192.903764 54.9125733,191.538713 55.713799,190.991845 C56.5086651,190.444977 57.7719732,190.936735 58.5753181,192.066505 C59.3574669,193.22383 59.3574669,194.58888 58.5562413,195.146347 Z M65.8613592,203.471174 C65.1597571,204.244846 63.6654083,204.03712 62.5716717,202.981538 C61.4524999,201.94927 61.1409122,200.484596 61.8446341,199.710926 C62.5547146,198.935137 64.0575422,199.15346 65.1597571,200.200564 C66.2704506,201.230712 66.6095936,202.705984 65.8613592,203.471174 Z M75.3025151,206.281542 C74.9930474,207.284134 73.553809,207.739857 72.1039724,207.313809 C70.6562556,206.875043 69.7087748,205.700761 70.0012857,204.687571 C70.302275,203.678621 71.7478721,203.20382 73.2083069,203.659543 C74.6539041,204.09619 75.6035048,205.261994 75.3025151,206.281542 Z M86.046947,207.473627 C86.0829806,208.529209 84.8535871,209.404622 83.3316829,209.4237 C81.8013,209.457614 80.563428,208.603398 80.5464708,207.564772 C80.5464708,206.498591 81.7483088,205.631657 83.2786917,205.606221 C84.8005962,205.576546 86.046947,206.424403 86.046947,207.473627 Z M96.6021471,207.069023 C96.7844366,208.099171 95.7267341,209.156872 94.215428,209.438785 C92.7295577,209.710099 91.3539086,209.074206 91.1652603,208.052538 C90.9808515,206.996955 92.0576306,205.939253 93.5413813,205.66582 C95.054807,205.402984 96.4092596,206.021919 96.6021471,207.069023 Z"
-                            fill="#161614"></path>
-                    </g>
-                </svg>
-                Source Code : <a href="https://github.com/hmthanh/rsa">https://github.com/hmthanh/rsa</a>
-            </section>
-            <!-- Section: Social media -->
-        </div>
-        <!-- Grid container -->
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            <a class="text-dark" style="text-decoration: none;" href="https://hmthanh.github.io/">Minh-Thanh Hoang</a>
-            © 2022 Copyright
-        </div>
-        <!-- Copyright -->
-    </footer>
+        </script>
+        <footer class="text-center">
+            <!-- Grid container -->
+            <div class="container pt-4 box">
+                <!-- Section: Social media -->
+                <section class="mb-4" id="source-code">
+                    <svg width="30px" height="30px" viewBox="0 0 256 250" version="1.1" style="margin-right: 10px;"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        preserveAspectRatio="xMidYMid">
+                        <g>
+                            <path
+                                d="M128.00106,0 C57.3172926,0 0,57.3066942 0,128.00106 C0,184.555281 36.6761997,232.535542 87.534937,249.460899 C93.9320223,250.645779 96.280588,246.684165 96.280588,243.303333 C96.280588,240.251045 96.1618878,230.167899 96.106777,219.472176 C60.4967585,227.215235 52.9826207,204.369712 52.9826207,204.369712 C47.1599584,189.574598 38.770408,185.640538 38.770408,185.640538 C27.1568785,177.696113 39.6458206,177.859325 39.6458206,177.859325 C52.4993419,178.762293 59.267365,191.04987 59.267365,191.04987 C70.6837675,210.618423 89.2115753,204.961093 96.5158685,201.690482 C97.6647155,193.417512 100.981959,187.77078 104.642583,184.574357 C76.211799,181.33766 46.324819,170.362144 46.324819,121.315702 C46.324819,107.340889 51.3250588,95.9223682 59.5132437,86.9583937 C58.1842268,83.7344152 53.8029229,70.715562 60.7532354,53.0843636 C60.7532354,53.0843636 71.5019501,49.6441813 95.9626412,66.2049595 C106.172967,63.368876 117.123047,61.9465949 128.00106,61.8978432 C138.879073,61.9465949 149.837632,63.368876 160.067033,66.2049595 C184.49805,49.6441813 195.231926,53.0843636 195.231926,53.0843636 C202.199197,70.715562 197.815773,83.7344152 196.486756,86.9583937 C204.694018,95.9223682 209.660343,107.340889 209.660343,121.315702 C209.660343,170.478725 179.716133,181.303747 151.213281,184.472614 C155.80443,188.444828 159.895342,196.234518 159.895342,208.176593 C159.895342,225.303317 159.746968,239.087361 159.746968,243.303333 C159.746968,246.709601 162.05102,250.70089 168.53925,249.443941 C219.370432,232.499507 256,184.536204 256,128.00106 C256,57.3066942 198.691187,0 128.00106,0 Z M47.9405593,182.340212 C47.6586465,182.976105 46.6581745,183.166873 45.7467277,182.730227 C44.8183235,182.312656 44.2968914,181.445722 44.5978808,180.80771 C44.8734344,180.152739 45.876026,179.97045 46.8023103,180.409216 C47.7328342,180.826786 48.2627451,181.702199 47.9405593,182.340212 Z M54.2367892,187.958254 C53.6263318,188.524199 52.4329723,188.261363 51.6232682,187.366874 C50.7860088,186.474504 50.6291553,185.281144 51.2480912,184.70672 C51.8776254,184.140775 53.0349512,184.405731 53.8743302,185.298101 C54.7115892,186.201069 54.8748019,187.38595 54.2367892,187.958254 Z M58.5562413,195.146347 C57.7719732,195.691096 56.4895886,195.180261 55.6968417,194.042013 C54.9125733,192.903764 54.9125733,191.538713 55.713799,190.991845 C56.5086651,190.444977 57.7719732,190.936735 58.5753181,192.066505 C59.3574669,193.22383 59.3574669,194.58888 58.5562413,195.146347 Z M65.8613592,203.471174 C65.1597571,204.244846 63.6654083,204.03712 62.5716717,202.981538 C61.4524999,201.94927 61.1409122,200.484596 61.8446341,199.710926 C62.5547146,198.935137 64.0575422,199.15346 65.1597571,200.200564 C66.2704506,201.230712 66.6095936,202.705984 65.8613592,203.471174 Z M75.3025151,206.281542 C74.9930474,207.284134 73.553809,207.739857 72.1039724,207.313809 C70.6562556,206.875043 69.7087748,205.700761 70.0012857,204.687571 C70.302275,203.678621 71.7478721,203.20382 73.2083069,203.659543 C74.6539041,204.09619 75.6035048,205.261994 75.3025151,206.281542 Z M86.046947,207.473627 C86.0829806,208.529209 84.8535871,209.404622 83.3316829,209.4237 C81.8013,209.457614 80.563428,208.603398 80.5464708,207.564772 C80.5464708,206.498591 81.7483088,205.631657 83.2786917,205.606221 C84.8005962,205.576546 86.046947,206.424403 86.046947,207.473627 Z M96.6021471,207.069023 C96.7844366,208.099171 95.7267341,209.156872 94.215428,209.438785 C92.7295577,209.710099 91.3539086,209.074206 91.1652603,208.052538 C90.9808515,206.996955 92.0576306,205.939253 93.5413813,205.66582 C95.054807,205.402984 96.4092596,206.021919 96.6021471,207.069023 Z"
+                                fill="#161614"></path>
+                        </g>
+                    </svg>
+                    Source Code : <a href="https://github.com/hmthanh/rsa">https://github.com/hmthanh/rsa</a>
+                </section>
+                <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                <a class="text-dark" style="text-decoration: none;" href="https://hmthanh.github.io/">Minh-Thanh
+                    Hoang</a>
+                © 2022 Copyright
+            </div>
+            <!-- Copyright -->
+        </footer>
 
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
