@@ -81,46 +81,76 @@
         <div class="container">
             <h4 id="modulo">Modulo</h4>
             <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">a</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="txtA" value="5" id="txtA"
-                                    aria-describedby="helpId" placeholder="a">
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">a</h4>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="txtA" value="5" id="txtA"
+                                            aria-describedby="helpId" placeholder="a">
+                                        <small id="helpId" class="form-text text-muted">a ∈ Z<sub>c</sub></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">b</h4>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="txtB" value="18" id="txtB"
+                                            aria-describedby="helpId" placeholder="b">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">c</h4>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="txtC" value="21" id="txtC"
+                                            aria-describedby="helpId" placeholder="c">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:20px;"></div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success" id="btnFindA"
+                                            style="padding: 0.375rem 4rem;">Find A</button>
+                                        <button type="button" class="btn btn-primary" id="btnFindB"
+                                            style="padding: 0.375rem 4rem; margin-left: 10px;">Find B</button>
+                                    </div>
+                                    <div style="margin-top: 10px;"></div>
+                                    <div class="form-group">
+                                        <textarea type="text" class="form-control" name="txtListResult" value="1"
+                                            id="txtListResult" aria-describedby="helpId" placeholder=""
+                                            rows="5"></textarea>
+                                        <small id="helpId" class="form-text text-muted"> Find a, b | a^b mod c =
+                                            d</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">b</h4>
+                            <h4 class="card-title">d</h4>
                             <div class="form-group">
-                                <input type="number" class="form-control" name="txtB" value="7" id="txtB"
-                                    aria-describedby="helpId" placeholder="b">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">c</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="txtC" value="21" id="txtC"
-                                    aria-describedby="helpId" placeholder="c">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">a<sup>b</sup> mod c</h4>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="txtMulti" value="" id="txtMulti"
+                                <input type="number" class="form-control" name="txtMulti" value="1" id="txtMulti"
                                     aria-describedby="helpId" placeholder="a^b mod c">
+                                <small id="helpId" class="form-text text-muted">d = a<sup>b</sup> mod c</small>
                             </div>
                             <div style="margin-top: 10px;"></div>
                             <div class="form-group" style="text-align: center;">
@@ -1148,6 +1178,18 @@
 
             ///////////////////////////////////////////////////
             $("#btnMulti").click(async function () {
+                updateMulti();
+            })
+            $("input[name=txtA]").on("keyup paste change", function () {
+                updateMulti();
+            });
+            $("input[name=txtB]").on("keyup paste change", function () {
+                updateMulti();
+            });
+            $("input[name=txtC]").on("keyup paste change", function () {
+                updateMulti();
+            });
+            async function updateMulti() {
                 let A = BigInt($("#txtA").val());
                 let B = BigInt($("#txtB").val());
                 let C = BigInt($("#txtC").val());
@@ -1157,6 +1199,32 @@
                 }).catch(error => {
                     $("#txtMulti").val(-1);
                 });
+            }
+            $("#btnFindA").click(async function () {
+                let B = BigInt($("#txtB").val());
+                let C = BigInt($("#txtC").val());
+                let D = BigInt($("#txtMulti").val());
+                let txt = "";
+                for (let i = 2n; i < C; i++) {
+                    let modu = await modulo(i, B, C);
+                    if (modu == D) {
+                        txt += i + "^" + B + " mod " + C + " = " + D + "\n";
+                    }
+                }
+                $("#txtListResult").val(txt);
+            })
+            $("#btnFindB").click(async function () {
+                let A = BigInt($("#txtA").val());
+                let C = BigInt($("#txtC").val());
+                let D = BigInt($("#txtMulti").val());
+                let txt = "";
+                for (let i = 2n; i <= C; i++) {
+                    let modu = await modulo(A, i, C);
+                    if (modu == D) {
+                        txt += A + "^" + i + " mod " + C + " = " + D + "\n";
+                    }
+                }
+                $("#txtListResult").val(txt);
             })
         });
 
