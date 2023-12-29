@@ -1,3 +1,3 @@
-# Minh họa thuật toán RSA
+# Illustration of the RSA algorithm
 
-Minh họa thuật toán RSA
+Visualization RSA algorithm
